@@ -35,8 +35,10 @@ function App() {
           </nav>
         )}
         <Routes>
-          <Route path={`${process.env.PUBLIC_URL}/`} element={Home} />
-          <Route path="/" element={<Home selectedGenre={selectedGenre} />} />
+          <Route
+            path={`${process.env.PUBLIC_URL}/`}
+            element={<Home selectedGenre={selectedGenre} />}
+          />
           <Route path="/movie/:id" element={<Detail />} />
         </Routes>
       </>
