@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Movie from "../components/Movie";
+import "./Home.css"; // Assuming you have a CSS file for styling
 
 function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -13,22 +15,24 @@ function Home() {
     setMovies(json.data.movies);
     setLoading(false);
   };
+
   useEffect(() => {
     getMovies();
   }, []);
 
   return (
-    <div>
+    <div className="home-container">
+      <h1>Movies Over 9.0 Ratings</h1> {/* Title Added */}
       {loading ? (
-        <h1>Loading...</h1>
+        <h1 className="loading">Loading...</h1>
       ) : (
-        <div>
+        <div className="movies">
           {movies.map((movie) => (
             <Movie
               key={movie.id}
+              id={movie.id}
               medium_cover_image={movie.medium_cover_image}
               title={movie.title}
-              summary={movie.summary}
               genres={movie.genres}
             />
           ))}
@@ -37,4 +41,5 @@ function Home() {
     </div>
   );
 }
+
 export default Home;

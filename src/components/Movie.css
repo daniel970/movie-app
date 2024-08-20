@@ -1,0 +1,60 @@
+/* Movie.css */
+
+.movie-container {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  padding: 15px;
+  margin: 20px 0;
+}
+
+.movie-container:hover {
+  transform: translateY(-10px);
+}
+
+.movie-container img {
+  width: 100%;
+  border-bottom: 1px solid #ddd;
+  border-radius: 10px 10px 0 0;
+}
+
+.movie-container h2 {
+  font-size: 1.5rem;
+  margin: 10px 0;
+  color: #333;
+}
+
+.movie-container h2 a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s;
+}
+
+.movie-container h2 a:hover {
+  color: #0073e6;
+}
+
+.movie-container p {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+  margin: 10px 0;
+}
+
+.movie-container ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.movie-container ul li {
+  background-color: #0073e6;
+  color: #fff;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
