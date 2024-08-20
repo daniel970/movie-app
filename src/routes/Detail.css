@@ -75,8 +75,8 @@
 }
 
 .download-button {
-  display: block; /* Make each button a block element to ensure it takes up full width and appears below the previous one */
-  width: max-content; /* Set width to fit the content */
+  display: block;
+  width: max-content;
   padding: 8px 12px;
   background-color: #007bff;
   color: white;
@@ -84,16 +84,39 @@
   border-radius: 5px;
   transition: background-color 0.3s;
   text-align: center;
-  font-size: 1rem; /* Adjust font size to match the rest of the text */
+  font-size: 1rem;
   margin-top: 10px;
-  white-space: nowrap; /* Prevents text wrapping inside the button */
 }
 
 .download-button:hover {
   background-color: #0056b3;
 }
 
+.toggle-summary-button {
+  display: block;
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.toggle-summary-button:hover {
+  background-color: #0056b3;
+}
+
+/* New styles for spacing and horizontal line */
+.movie-info .separator {
+  margin: 20px 0; /* Add space above and below the line */
+  border: none;
+  border-top: 1px solid #ccc; /* Gray horizontal line */
+}
+
 .torrent-links a {
+  display: block;
   margin-bottom: 10px;
 }
 

@@ -6,6 +6,7 @@ function Detail() {
   const { id } = useParams();
   const [loading, setLoading] = useState(true);
   const [movie, setMovie] = useState(null);
+  const [showFullSummary, setShowFullSummary] = useState(false); // State to manage summary display
 
   const getMovie = async () => {
     const json = await (
@@ -42,6 +43,15 @@ function Detail() {
         ))
       : null;
 
+  const summary = movie.description_full;
+  const shortSummary =
+    summary && summary.length > 300 ? summary.slice(0, 300) + "..." : summary;
+
+  const toggleSummary = () => {
+    setShowFullSummary(!showFullSummary);
+  };
+
+  // Within the return block of the Detail.js component
   return (
     <div>
       <div
@@ -58,7 +68,13 @@ function Detail() {
       </div>
       <div className="movie-info">
         <h2>{movie.title}</h2>
-        <p>{movie.description_full}</p>
+        <p>{showFullSummary ? summary : shortSummary}</p>
+        {summary && summary.length > 300 && (
+          <button onClick={toggleSummary} className="toggle-summary-button">
+            {showFullSummary ? "Show Less" : "Load Details"}
+          </button>
+        )}
+        <hr className="separator" /> {/* Add a horizontal line */}
         <ul>
           <li>
             <strong>Year:</strong> {movie.year}

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Movie from "../components/Movie";
-import "./Home.css"; // Assuming you have a CSS file for styling
+import "./Home.css";
 
-function Home() {
+function Home({ selectedGenre }) {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
 
@@ -20,20 +20,25 @@ function Home() {
     getMovies();
   }, []);
 
+  const filteredMovies = selectedGenre
+    ? movies.filter((movie) => movie.genres.includes(selectedGenre))
+    : movies;
+
   return (
     <div className="home-container">
-      <h1>Movies Over 9.0 Ratings</h1> {/* Title Added */}
+      <h1>Movies Over 9.0 Ratings</h1>
       {loading ? (
         <h1 className="loading">Loading...</h1>
       ) : (
         <div className="movies">
-          {movies.map((movie) => (
+          {filteredMovies.map((movie) => (
             <Movie
               key={movie.id}
               id={movie.id}
               medium_cover_image={movie.medium_cover_image}
               title={movie.title}
               genres={movie.genres}
+              rating={movie.rating}
             />
           ))}
         </div>
