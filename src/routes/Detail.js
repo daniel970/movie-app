@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import "./Detail.css"; // Import the CSS file
 
 function Detail() {
   const { id } = useParams();
