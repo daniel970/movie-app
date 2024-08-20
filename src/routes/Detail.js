@@ -20,30 +20,58 @@ function Detail() {
   }, []);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <h1 className="loading">Loading...</h1>;
   }
 
+  // Get the background image URL
+  const backgroundImage = movie.background_image_original;
+
+  // Get the torrent URLs from the movie object
+  const torrentLinks =
+    movie.torrents && movie.torrents.length > 0
+      ? movie.torrents.map((torrent, index) => (
+          <a
+            key={index}
+            href={torrent.url}
+            className="download-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Torrent {torrent.quality} - {torrent.type}
+          </a>
+        ))
+      : null;
+
   return (
-    <div className="movie-detail">
-      <img src={movie.large_cover_image} alt={movie.title} />
-      <h2>{movie.title}</h2>
-      <p>{movie.description_full}</p>
-      <ul>
-        <li>
-          <strong>Year:</strong> {movie.year}
-        </li>
-        <li>
-          <strong>Rating:</strong> {movie.rating}
-        </li>
-        <li>
-          <strong>Runtime:</strong> {movie.runtime} minutes
-        </li>
-      </ul>
-      <ul className="genres">
-        {movie.genres.map((genre) => (
-          <li key={genre}>{genre}</li>
-        ))}
-      </ul>
+    <div>
+      <div
+        className="movie-background"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      >
+        <div className="movie-detail">
+          <img
+            src={movie.large_cover_image}
+            alt={movie.title}
+            className="cover-image"
+          />
+        </div>
+      </div>
+      <div className="movie-info">
+        <h2>{movie.title}</h2>
+        <p>{movie.description_full}</p>
+        <ul>
+          <li>
+            <strong>Year:</strong> {movie.year}
+          </li>
+          <li>
+            <strong>Rating:</strong> {movie.rating}
+          </li>
+          <li>
+            <strong>Runtime:</strong> {movie.runtime} minutes
+          </li>
+        </ul>
+        <div className="torrent-links">{torrentLinks}</div>
+      </div>
     </div>
   );
 }
