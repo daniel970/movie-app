@@ -18,7 +18,9 @@ function App() {
 
   const Layout = () => {
     const location = useLocation();
-    const showNavBar = location.pathname === `${process.env.PUBLIC_URL}/`;
+    const showNavBar =
+      location.pathname === `${process.env.PUBLIC_URL}/` ||
+      location.pathname === "/";
 
     return (
       <>
@@ -35,14 +37,8 @@ function App() {
           </nav>
         )}
         <Routes>
-          <Route
-            path={`${process.env.PUBLIC_URL}/`}
-            element={<Home selectedGenre={selectedGenre} />}
-          />
-          <Route
-            path={`${process.env.PUBLIC_URL}/movie/:id`}
-            element={<Detail />}
-          />
+          <Route path="/" element={<Home selectedGenre={selectedGenre} />} />
+          <Route path="/movie/:id" element={<Detail />} />
         </Routes>
       </>
     );
